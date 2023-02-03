@@ -52,3 +52,20 @@ console.log(demo);
 demo.innerHTML = "ANDIAMO IN PAUSA";
 
 
+
+//////////
+var primoNum = "20";
+var secondoNum = "5";
+console.log(primoNum * secondoNum); //100
+console.log(primoNum /  secondoNum); //4
+console.log(primoNum -  secondoNum);//15
+console.log(primoNum % secondoNum);//0
+console.log(primoNum + secondoNum); //205
+console.log(Number(primoNum) + Number(secondoNum)); // 25
+primoNum = 21;
+
+
+var parola = "ciao";
+var parola2 = "mondo";
+console.log(parola + parola2);
+

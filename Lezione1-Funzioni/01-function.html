@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="demo"></div>
+    
+    
+    <script>
+        //dichiarazione di una funzione
+        function saluta(){
+            // alert("Ciao");
+            console.log("Ciao nella console");
+        }
+
+        //richiamo della funzione
+        saluta();
+
+
+        //ATT: il richiamo è indipendente dalla dichiarazione, cioè può anche avvenire prima
+
+        chiamaPausa();
+
+        function chiamaPausa(){
+            console.log("PAUSAAAA");
+        }
+
+        /////////////////////////////////////
+        //recupero un pezzo di HTML
+        const demo = document.getElementById("demo");
+
+        function scriviNome(nomeUser){
+            console.log("Ciao " + nomeUser);
+            //scrivo nel div demo
+            demo.innerHTML = "<h2>Ciao " + nomeUser + "</h2>";
+        }
+
+        scriviNome("Anna");
+        ////////////////////////////////////
+
+        function calcolaArea(base, altezza){
+            let area = base * altezza; //VARIABILE LOCALE
+            return area;
+        }
+
+        //raccogliamo l'area come paramentro di output
+        console.log(calcolaArea(4,5));
+        // console.log(area);
+
+        var area = calcolaArea(6,7); //VARIABILE GLOBALE
+        console.log(area);
+
+        function calcolaVolume(area, profondita){
+            var volume = area * profondita;
+            return volume;
+        }
+
+        var mioVolume = calcolaVolume(calcolaArea(6,7), 5);
+        console.log(mioVolume);
+
+        var mioVolume2 = calcolaVolume(area, 5);
+        console.log(mioVolume2);
+
+    </script>
+</body>
+</html>

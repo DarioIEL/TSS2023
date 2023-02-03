@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Inserisci il tuo nome per farti salutare</h2>
+
+    <input type="text" id="nomeUser" placeholder="nome utente">
+    <button id="btn">Salutami</button>
+
+    <div id="demo"></div>
+
+    <script>
+    //recupero solo i pezzi STATICI
+    const demo = document.getElementById("demo");
+    const btn = document.getElementById("btn");
+
+    function saluta(){
+        //solo nella funzione prendo la parte "dinamica", cioè quella compilata dall'utente
+        let nomeUser = document.getElementById("nomeUser").value;
+        demo.innerHTML = `<h3> Ciao ${nomeUser} !! </h3>`;
+    }
+
+    btn.onclick = saluta;
+
+    </script>
+</body>
+</html>

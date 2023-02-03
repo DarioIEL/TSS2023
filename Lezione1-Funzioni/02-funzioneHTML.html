@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Clicca sul pulsante per farti salutare</h3>
+
+    <button id="btn">Salutami</button>
+
+    <div id="demo"></div>
+
+    <script>
+        //recupero le porzioni "statiche"
+        const demo = document.getElementById("demo");
+        const btn = document.getElementById("btn");
+
+        //la funzione vine richiamata nello HTML
+        function salutami(nomeUser){
+            demo.innerHTML = "<h2> Ciao " + nomeUser + "</h2>";
+        }
+
+        // btn.onclick = salutami("Gennarino"); //su questo onclick non vanno le parentesi tonde
+        //il problema di salutami("Gennarino") viene risolto con una funzione anonima
+        btn.onclick = function(){
+            salutami("Gennarino");
+        }
+
+        /////////////////
+        function prova(){
+            console.log("Funzione di prova");
+        }
+        //quando porto l'evento nel JS sono obbligato a non mettere le parentesi tonde
+        // btn.onclick = prova;
+
+
+    </script>
+</body>
+</html>

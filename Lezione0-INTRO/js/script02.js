@@ -40,7 +40,7 @@ console.log(cognomeArr);
 
 //inverti una stringa
 var miaStringa = "Pasquale";
-console.log( miaStringa.split("").reverse().join("") );
+console.log( miaStringa.split("").reverse().join("").charAt(0) );
 
 var frase = "i topi non avevano nipoti";
 console.log(frase.split("").reverse().join(""));
