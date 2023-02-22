@@ -31,8 +31,9 @@ for(const key in dipendente){
 
 
 //Costruttore
-function Operaio(nome, cognome, stipendio, scatto, anniAssunz){
+function Operaio(id,nome, cognome, stipendio, scatto, anniAssunz){
     //proprietà
+    this.id = id;
     this.nome = nome;
     this.cognome = cognome;
     this.stipendio = stipendio;

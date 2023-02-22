@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Cose da fare</h1>
+
+    <ul id="lista">
+        <li class="txtRed" id="uno">Andare al cinema</li>
+        <li class="txtRed" id="due">Andare al mare</li>
+        <li class="txtRed" id="tre">Leggere un libro</li>
+    </ul>
+    <hr>
+
+    <h2>Cose da mangiare</h2>
+    <ul id="elenco">
+        <li class="txtRed">Frutta</li>
+        <li class="txtRed">Verdura</li>
+        <li class="txtRed">Carne</li>
+        <li class="txtRed">Vino</li>
+    </ul>
+
+    <script>
+    //Query Selector funziona con sintassi CSS
+
+    var elUno = document.querySelector("#uno");
+    console.log(elUno); // <li class="txtRed" id="uno">Andare al cinema</li>
+    //recupero solo il testo
+    console.log(elUno.textContent);
+
+    var elTitolo = document.querySelector("h1");
+    console.log(elTitolo); //<h1>Cose da fare</h1>
+
+    var elLi = document.querySelector("li"); //prende solo la prima occorrenza
+    console.log(elLi);
+
+    var elLi2 = document.querySelector("li#due.txtRed");
+    console.log(elLi2);
+
+    var elUl = document.querySelector("ul");
+    console.log(elUl);
+    // var figliDiUl = elUl.children;
+    // console.log(figliDiUl);
+
+    //QUERY SELECTOR ALL - recupera più cose sempre attraverso sintassi CSS
+    //1°
+    // var lis = document.querySelectorAll("li");
+    // console.log(lis);
+
+    //2°
+    // var lis = document.querySelectorAll(".txtRed");
+    // console.log(lis); 
+
+    //3°
+    var lis = document.querySelectorAll("li.txtRed");
+    console.log(lis);
+
+    //prendo solo le cose da mangiare
+    var liMangiare = document.querySelectorAll("ul#elenco li.txtRed");
+    console.log(liMangiare);
+
+    // var liMangiare = document.querySelector("ul#elenco").children;
+    // console.log(liMangiare);
+
+
+    //voglio applicare il colore blue solo alla lista iniziale
+    var liLista = document.querySelectorAll("ul#lista li.txtRed"); //->Nodelist
+    // var liLista = document.querySelector("ul#lista").children; //->Collection
+    
+    
+    // for(var i = 0; i < liLista.length; i++){
+    //     liLista[i].classList.replace("txtRed", "txtBlue");
+    // }
+
+    [...liLista].forEach(liSingolo=>{
+        liSingolo.classList.replace("txtRed", "txtBlue");
+    })
+
+    </script>
+</body>
+</html>
