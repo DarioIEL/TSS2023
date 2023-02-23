@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <input type="text" id="item" placeholder="todo">
+
+    <button id="btn">Aggiungi</button>
+
+    <div id="feedback"></div>
+
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        var btn = document.querySelector("#btn");
+        var feedback = document.querySelector("#feedback");
+        var lista = document.querySelector("#lista");
+
+        function aggiungi(){
+            let item = document.querySelector("#item").value;
+
+            let li = document.createElement("li");
+            li.textContent = item;
+
+            //creo il pulsante per eliminare
+            let btnElim = document.createElement("button");
+            btnElim.textContent = "X";
+
+            //<li>item<button>X</button></li>
+            li.appendChild(btnElim);
+
+            //IP: è un metodo dell'oggetto LI
+            btnElim.onclick = function(){
+                // li.parentNode.removeChild(li);
+                lista.removeChild(li);
+            }
+
+            //metodo per barrato
+            li.onclick = function(){
+                li.setAttribute("class", "barrato");
+
+                //rimuovere il barrato
+            }
+
+
+            //creare il pulsante modifica
+
+            //pulire il campo input ad ogni aggiunta
+
+            //ogni voce che viene inserita ha un colore a caso
+
+            lista.appendChild(li);
+        }
+
+        //crea un pulsante per cancellare l'intera lista
+
+        //crea un altro campo nel quale verrà inserita la data
+
+
+        //Archiviare la lista
+        //creo un pulsante, simile a cancella lista, che al click prende tutte le cose da fare e le inserisce in un div accanto, solo testi e date.
+        //Consiglio, per "registare i dati" utilizza un array di oggetti di tipo Nota(item: string, data: Date)
+        
+        
+
+        btn.onclick = aggiungi;
+    </script>
+</body>
+</html>

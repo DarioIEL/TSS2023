@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Libri da leggere</h1>
+    <ul id="libri">
+        <li class="txtGreen">Underworld</li>
+        <li class="txtGreen">Harry Potter</li>
+        <li class="txtGreen">Il signore degli anelli</li>
+        <li class="txtGreen ">Rumore Bianco</li>
+    </ul>
+    
+    <button id="btnBold" >Grassetto</button>
+    <button id="btnUnd">Sottolineato</button>
+    <button id="btnCha">Cambia colori</button>
+    <button id="btnPrint">Stampa le classi</button>
+    <button id="btnNight">Mod Notte</button>
+
+    <script>
+        var btnBold = document.querySelector("#btnBold");
+        var btnUnd = document.querySelector("#btnUnd");
+        var btnCha = document.querySelector("#btnCha");
+        var btnNight = document.querySelector("#btnNight");
+        var btnPrint = document.querySelector("#btnPrint");
+        
+        function aggRimBold(){
+            var lis = document.querySelectorAll("ul#libri li");
+            [...lis].forEach( singoloLi =>{
+
+                // if(singoloLi.classList.contains("grassetto")){
+                //     singoloLi.classList.remove("grassetto")
+                // }else{
+                //     singoloLi.classList.add("grassetto");
+                // }
+
+                singoloLi.classList.toggle("grassetto");
+            })
+        }
+
+        function aggRimUnd(){
+            var lis = document.querySelectorAll("ul#libri li");
+            
+            [...lis].forEach(singoloLi =>{
+                singoloLi.classList.toggle("sottolineato");
+            })
+        }
+        
+        function cambiaColor(){
+            var lis = document.querySelectorAll("ul#libri li");
+            
+            for(var i = 0; i < lis.length; i++){
+                if( (i+1) % 2 == 0){
+                    if(lis[i].classList.contains("txtBlue")){
+
+                        lis[i].classList.replace("txtBlue", "txtGreen");
+                    }else{
+                        
+                        lis[i].classList.replace("txtGreen", "txtBlue");
+                    }
+                }
+            }
+        }
+
+
+        function stampaClassi(){
+            var lis = document.querySelectorAll("li");
+
+            [...lis].forEach(li =>{
+                console.log(li.classList);
+            })
+        }
+
+        function impostaNotte(){
+            var body = document.querySelector("body");
+            
+            if(body.hasAttribute("class")){
+                location.reload();
+            }else{
+                
+                body.setAttribute("class", "nightMode");
+                
+                var lis = document.querySelectorAll("li");
+                [...lis].forEach(li => {
+                    li.removeAttribute("class");
+                })
+            }
+        }
+
+        btnBold.onclick = aggRimBold;
+        btnUnd.onclick = aggRimUnd;
+        btnCha.onclick = cambiaColor;
+        btnNight.onclick = impostaNotte;
+        btnPrint.onclick = stampaClassi;
+    </script>
+</body>
+</html>

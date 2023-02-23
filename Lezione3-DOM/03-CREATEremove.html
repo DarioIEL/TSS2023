@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <h1>Creazione elementi</h1>
+
+    <div id="cont" class="container"></div>
+
+    <div id="demo" class="container"></div>
+
+
+    <script>
+        var cont = document.querySelector("#cont");
+        
+        // cont.innerHTML = "<div class ='dimDiv'> Ciao </div>";
+
+        //CREO IL NUOVO DIV
+        var nuovoDiv = document.createElement("div"); //object
+        nuovoDiv.setAttribute("class", "dimDiv");
+        nuovoDiv.textContent = "Ciao";
+
+        //AGGANCIO IL NUOVO DIV AL SUO GENITORE
+        cont.appendChild(nuovoDiv);
+
+        //voglio creare una sequenza di quadratini
+        var demo = document.querySelector("#demo");
+
+        function creaQuad(){
+            for(var i = 0; i < 10; i++){
+
+                let quad = document.createElement("div");
+                quad.setAttribute("class", "dimQuad");
+                quad.textContent = "Quad n°: " + (i+1)
+                
+                demo.appendChild(quad);
+            } 
+        }
+
+        creaQuad();
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
