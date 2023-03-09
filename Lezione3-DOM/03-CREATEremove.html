@@ -13,7 +13,7 @@
 
     <div id="cont" class="container"></div>
 
-    <div id="demo" class="container"></div>
+    <div id="demo" class="container" ></div>
 
 
     <script>
@@ -39,7 +39,13 @@
                 quad.setAttribute("class", "dimQuad");
                 quad.textContent = "Quad n°: " + (i+1)
                 
+                quad.onmouseover = function(){
+                    quad.classList.toggle("bgGreen")
+                }
+
                 demo.appendChild(quad);
+
+
             } 
         }
 

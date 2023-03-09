@@ -10,6 +10,7 @@
 <body>
     
     <input type="text" id="item" placeholder="todo">
+    <input type="date" id="data" >
 
     <button id="btn">Aggiungi</button>
 
@@ -27,13 +28,36 @@
         function aggiungi(){
             let item = document.querySelector("#item").value;
 
+            let data = document.querySelector("#data").value;
+
+            let dataRiformattata = new Date(data);
+
             let li = document.createElement("li");
-            li.textContent = item;
+            li.textContent = item + " - " + dataRiformattata.getDate() + "/" +( dataRiformattata.getMonth()+1) + "/" +dataRiformattata.getFullYear();
 
             //creo il pulsante per eliminare
             let btnElim = document.createElement("button");
             btnElim.textContent = "X";
 
+
+            //creo il pulsante per modificare
+            let btnMod = document.createElement("button");
+            btnMod.textContent = "Mod";
+
+            btnMod.onclick = function(){
+                console.log(li.children); //veded solo i ChildElementsNodes
+                console.log(li.firstChild);
+                console.log(li.firstElementChild);
+
+                let textLi = li.firstChild.textContent.split(" - ")[0];
+
+                console.log(textLi);
+
+
+               
+            }
+
+            li.appendChild(btnMod)
             //<li>item<button>X</button></li>
             li.appendChild(btnElim);
 
@@ -58,6 +82,7 @@
             //ogni voce che viene inserita ha un colore a caso
 
             lista.appendChild(li);
+            
         }
 
         //crea un pulsante per cancellare l'intera lista
@@ -68,7 +93,7 @@
         //Archiviare la lista
         //creo un pulsante, simile a cancella lista, che al click prende tutte le cose da fare e le inserisce in un div accanto, solo testi e date.
         //Consiglio, per "registare i dati" utilizza un array di oggetti di tipo Nota(item: string, data: Date)
-        
+
         
 
         btn.onclick = aggiungi;

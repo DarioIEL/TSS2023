@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <h1>Login</h1>
+    
+    
+    <form id="formLogin">
+        <p>Per poter accedere inserisci i dati rischiesti</p>
+
+        Nome: <input type="text" id="nome" > <br>
+        Cognome: <input type="text" id="cognome"> <br>
+        Matr: <input type="number" id="matr"> <br>
+        Pass: <input type="password" id="pass"> <br>
+        <button type="submit" id="btnLogin">Login</button>
+        
+    </form>
+
+    <button id="btnLogout">Logout</button>
+
+    <div id="demo"></div>
+
+    <script>
+
+        function User (nome, cognome, matr, pass){
+            this.nome = nome;
+            this.cognome = cognome;
+            this.matr = matr;
+            this.pass = pass;
+        }
+
+        var mioForm = document.querySelector("#formLogin");
+        var nome = document.querySelector("#nome");
+        var cognome = document.querySelector("#cognome");
+        var matr = document.querySelector("#matr");
+        var pass = document.querySelector("#pass");
+        var demo = document.querySelector("#demo");
+
+        var btnLogin = document.querySelector("#btnLogin");
+        var btnLogout = document.querySelector("#btnLogout");
+
+        function controllaForm(){
+            if(nome.value == "" || cognome.value=="" || matr.value=="" || pass.value == ""){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        function login(){
+            if(controllaForm()){
+                let user = new User(nome.value, cognome.value, matr.value, pass.value);
+                let userToSave = JSON.stringify(user);
+                localStorage.setItem("user", userToSave);
+                location.reload();
+            }else{
+                event.preventDefault();
+                demo.innerHTML = "Ci sono dei campi non validi";
+            }
+        }
+        btnLogin.onclick = login;
+        
+
+
+        function logout(){
+            localStorage.removeItem("user");
+    
+            location.reload();
+        }
+
+        btnLogout.onclick = logout;
+   
+        function recuperaUser(){
+            let userJSON = localStorage.getItem("user");
+            if(userJSON != null){
+                let user = JSON.parse(userJSON);
+                demo.innerHTML = "<h2>Ciao " + user.nome + " </h2>";
+                mioForm.setAttribute("class", "hide");                
+            }else{
+                btnLogout.setAttribute("class", "hide");
+                demo.innerHTML = "<h4>Non c'è nessun utente connesso</h4>";
+            }
+        }
+   
+        recuperaUser();
+            
+
+
+
+
+    </script>
+</body>
+</html>
